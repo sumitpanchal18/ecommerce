@@ -1,8 +1,8 @@
 package com.app.ecommerce.dbMetadata
 
 import com.app.ecommerce.network.ApiInterface
-import com.app.ecommerce.ui.activity.usecase.LoginUseCase
-import com.app.ecommerce.ui.activity.usecase.LoginUseCaseImpl
+import com.app.ecommerce.ui.usecase.LoginUseCase
+import com.app.ecommerce.ui.usecase.LoginUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

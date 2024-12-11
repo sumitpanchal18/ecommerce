@@ -17,14 +17,11 @@
         android:theme="@style/Theme.DragerHill"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.ecommerce.ProductDetailActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".ui.activity.ecommerce.DashBoardActivity"
+            android:name=".ui.main.activity.DashBoardActivity"
             android:exported="false"
             android:theme="@style/Theme.DragerHill" />
         <activity
-            android:name=".ui.activity.ecommerce.SplashActivity"
+            android:name=".ui.main.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.main.MainActivity"
+            android:name=".dbMetadata.MainActivity"
             android:exported="false" />
     </application>
 

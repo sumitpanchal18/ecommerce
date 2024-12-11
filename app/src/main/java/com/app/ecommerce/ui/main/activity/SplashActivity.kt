@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.ecommerce
+package com.app.ecommerce.ui.main.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.app.ecommerce.R
-import com.app.ecommerce.ui.activity.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

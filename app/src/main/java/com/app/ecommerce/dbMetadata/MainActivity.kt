@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.main
+package com.app.ecommerce.dbMetadata
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

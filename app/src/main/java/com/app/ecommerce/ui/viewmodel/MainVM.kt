@@ -1,12 +1,13 @@
-package com.app.ecommerce.ui.activity.viewmodel
+package com.app.ecommerce.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.ecommerce.network.Product
-import com.app.ecommerce.ui.activity.ecommerce.BaseActivity.Companion.TAG
-import com.app.ecommerce.ui.activity.repo.MainRepo
+import com.app.ecommerce.ui.main.activity.BaseActivity.Companion.TAG
+import com.app.ecommerce.ui.main.navigator.DashBoardNavigator
+import com.app.ecommerce.ui.repo.MainRepo
 import com.app.ecommerce.utils.BaseViewModel
 import com.app.ecommerce.utils.ResponseStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainVM @Inject constructor(
     private val repository: MainRepo
-) : BaseViewModel<LoginInputNavigator>() {
+) : BaseViewModel<DashBoardNavigator>() {
 
     private val _productList = MutableLiveData<List<Product>>()
     val productList: LiveData<List<Product>> get() = _productList

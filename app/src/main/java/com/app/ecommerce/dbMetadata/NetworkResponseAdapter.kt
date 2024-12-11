@@ -1,6 +1,6 @@
 package com.app.ecommerce.dbMetadata
 
-import com.app.ecommerce.ui.activity.usecase.NetworkResponse
+import com.app.ecommerce.ui.usecase.NetworkResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.CallAdapter

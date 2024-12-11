@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.usecase
+package com.app.ecommerce.ui.usecase
 
 import com.app.ecommerce.network.Product
 

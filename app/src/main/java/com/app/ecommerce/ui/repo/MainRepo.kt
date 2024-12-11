@@ -1,8 +1,8 @@
-package com.app.ecommerce.ui.activity.repo
+package com.app.ecommerce.ui.repo
 
 import com.app.ecommerce.network.Product
-import com.app.ecommerce.ui.activity.usecase.LoginUseCase
-import com.app.ecommerce.ui.activity.usecase.NetworkResponse
+import com.app.ecommerce.ui.usecase.LoginUseCase
+import com.app.ecommerce.ui.usecase.NetworkResponse
 import com.app.ecommerce.utils.Constants
 import com.app.ecommerce.utils.ResponseStatus
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.usecase
+package com.app.ecommerce.ui.usecase
 
 import dagger.Binds
 import dagger.Module
