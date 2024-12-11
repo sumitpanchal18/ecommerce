@@ -1,0 +1,433 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.app.ecommerce.ui.activity.viewmodel.ProductDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="47dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="@{()->viewModel.onBackClick()}"
+                    android:padding="8dp"
+                    android:src="@drawable/img_3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgSaveBtnLogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/white_ovel_background"
+                    android:padding="9dp"
+                    android:src="@drawable/img_1"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgShareBtnLogo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="0dp"
+                    android:padding="12dp"
+                    android:src="@drawable/img_4"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+                    app:layout_constraintEnd_toStartOf="@+id/imgSaveBtnLogo"
+                    app:layout_constraintTop_toTopOf="@+id/btnBack" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/llBack">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="97dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/addtocart_background">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imgPlusItem"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/white_ovel_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtPlusItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plus"
+                        android:textSize="27sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgPlusItem"
+                        app:layout_constraintEnd_toEndOf="@+id/imgPlusItem"
+                        app:layout_constraintStart_toStartOf="@+id/imgPlusItem"
+                        app:layout_constraintTop_toTopOf="@+id/imgPlusItem" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtNoOfItems"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/_2"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgPlusItem"
+                        app:layout_constraintEnd_toStartOf="@+id/imgPlusItem"
+                        app:layout_constraintTop_toTopOf="@+id/imgPlusItem" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/imgMinusItem"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/white_ovel_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgPlusItem"
+                        app:layout_constraintEnd_toStartOf="@+id/txtNoOfItems"
+                        app:layout_constraintTop_toTopOf="@+id/txtNoOfItems" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/minus"
+                        android:textSize="30sp"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/imgMinusItem"
+                        app:layout_constraintEnd_toEndOf="@+id/imgMinusItem"
+                        app:layout_constraintStart_toStartOf="@+id/imgMinusItem"
+                        app:layout_constraintTop_toTopOf="@+id/imgMinusItem" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/available_in_stock"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/size"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSizeS"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/addtocart_background"
+                        android:text="@string/size_s"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSizeM"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/addtocart_background"
+                        android:text="@string/size_m"
+                        android:textAlignment="center"
+                        android:textSize="29sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSizeL"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/addtocart_background"
+                        android:text="@string/l"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtSizeXL"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/addtocart_background"
+                        android:text="@string/xl"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/color"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/txtColor1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/custom_edit_text"
+                        android:backgroundTint="@color/black"
+
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/txtColor2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/custom_edit_text"
+                        android:backgroundTint="@color/BlueViolet"
+
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/txtColor3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/custom_edit_text"
+                        android:backgroundTint="@color/lavender"
+
+                        />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/txtColor4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/custom_edit_text"
+                        android:backgroundTint="@color/OrangeRed"
+
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/rating" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/rating"
+                        android:textColor="@color/black"
+
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="7dp"
+                        android:src="@drawable/review" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/reviewText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
+
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/reviews"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/viewtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/DarkGray" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/textStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/description"
+                    android:textSize="25sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="150dp"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="BottomAppBar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="25dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnAddToCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="5dp"
+                    android:backgroundTint="@color/lavender"
+                    android:text="@string/add_to_cart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:cornerRadius="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:layout_editor_absoluteX="16dp" />
+            </LinearLayout>
+
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
