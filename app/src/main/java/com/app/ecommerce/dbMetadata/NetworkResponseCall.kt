@@ -2,8 +2,8 @@ package com.app.ecommerce.dbMetadata
 
 import android.os.Message
 import android.util.Log
-import com.app.ecommerce.ui.activity.ecommerce.BaseActivity
-import com.app.ecommerce.ui.activity.usecase.NetworkResponse
+import com.app.ecommerce.ui.main.activity.BaseActivity
+import com.app.ecommerce.ui.usecase.NetworkResponse
 import com.app.ecommerce.utils.Constants
 import com.app.ecommerce.utils.StorageHelper
 import okhttp3.Request

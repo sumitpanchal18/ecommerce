@@ -1,7 +1,7 @@
-package com.app.ecommerce.ui.activity.viewmodel
+package com.app.ecommerce.ui.main.navigator
 
 
-interface LoginInputNavigator : BaseNavigator {
+interface DashBoardNavigator : BaseNavigator {
     fun onLoginButtonClicked()
     fun onForgotPasswordClicked()
     fun onBackClicked()

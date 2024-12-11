@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.viewmodel
+package com.app.ecommerce.ui.main.navigator
 
 interface BaseNavigator {
     fun showProgressDialog()

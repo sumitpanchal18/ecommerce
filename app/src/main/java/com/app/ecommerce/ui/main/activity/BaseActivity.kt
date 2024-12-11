@@ -1,4 +1,4 @@
-package com.app.ecommerce.ui.activity.ecommerce
+package com.app.ecommerce.ui.main.activity
 
 import android.Manifest
 import android.content.Context

@@ -1,7 +1,7 @@
 package com.app.ecommerce.network
 
-import com.app.ecommerce.ui.activity.usecase.ApiError
-import com.app.ecommerce.ui.activity.usecase.NetworkResponse
+import com.app.ecommerce.ui.usecase.ApiError
+import com.app.ecommerce.ui.usecase.NetworkResponse
 import retrofit2.http.GET
 
 interface ApiInterface {

@@ -1,24 +1,19 @@
-package com.app.ecommerce.ui.activity.viewmodel
+package com.app.ecommerce.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.ecommerce.ui.adapter.Items
+import com.app.ecommerce.ui.main.navigator.DashBoardNavigator
 import com.app.ecommerce.utils.BaseViewModel
 
 
-class ProductDetailViewModel : BaseViewModel<Items>() {
+class ProductDetailViewModel : BaseViewModel<DashBoardNavigator>() {
 
     private val _product = MutableLiveData<Items>()
     val product: LiveData<Items> get() = _product
 
-    interface OnBackClickListener {
-        fun onBackClicked()
-    }
-
-    var backClickListener: OnBackClickListener? = null
-
-    fun onBackClick() {
-        backClickListener?.onBackClicked()
+    fun onBackClicked() {
+        navigator?.onBackClicked()
     }
 
     fun setProductDetails(

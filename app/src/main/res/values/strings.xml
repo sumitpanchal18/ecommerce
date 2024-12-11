@@ -75,6 +75,8 @@
     <string name="rating">Rating</string>
     <string name="reviews">Reviews</string>
     <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="back">Back</string>
 
     <!-- Add your other required strings -->
 </resources>
