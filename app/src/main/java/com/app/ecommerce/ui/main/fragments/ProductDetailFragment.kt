@@ -1,6 +1,5 @@
 package com.app.ecommerce.ui.main.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,13 +9,12 @@ import androidx.fragment.app.viewModels
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
 import com.app.ecommerce.databinding.FragmentProductDetailBinding
-import com.app.ecommerce.ui.main.activity.BaseActivity.Companion.TAG
-import com.app.ecommerce.ui.main.navigator.DashBoardNavigator
 import com.app.ecommerce.ui.viewmodel.ProductDetailViewModel
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, ProductDetailViewModel>(),
-    DashBoardNavigator {
+@AndroidEntryPoint
+class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, ProductDetailViewModel>() {
 
     private val productDetailViewModel: ProductDetailViewModel by viewModels()
     private lateinit var binding: FragmentProductDetailBinding
@@ -36,8 +34,6 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
         return binding.root
     }
 
-
-    @SuppressLint("SetTextI18n")
     private fun setupProductDetails(binding: FragmentProductDetailBinding) {
         val productId = arguments?.getString("product_id") ?: ""
         val productImage = arguments?.getString("product_image") ?: ""
@@ -60,36 +56,4 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
                 .error(R.drawable.error).into(binding.imgProduct)
         }
     }
-
-    override fun onLoginButtonClicked() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onForgotPasswordClicked() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onBackClicked() {
-        Log.d(TAG, "onBackClicked: ")
-        val fragmentManager = requireActivity().supportFragmentManager
-        fragmentManager.popBackStack()
-    }
-
-    override fun onSignUpClicked() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showProgressDialog() {
-        TODO("Not yet implemented")
-    }
-
-    override fun dismissProgressDialog() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showMessage(code: Int, message: String?) {
-        TODO("Not yet implemented")
-    }
-
-
 }

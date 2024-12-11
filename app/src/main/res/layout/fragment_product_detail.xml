@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.activity.viewmodel.ProductDetailViewModel" />
+            type="com.app.ecommerce.ui.viewmodel.ProductDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +32,7 @@
                     android:layout_height="55dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    android:onClick="@{()->viewModel.onBackClick()}"
+                    android:onClick="@{()->viewModel.onBackClicked()}"
                     android:padding="8dp"
                     android:src="@drawable/img_3"
                     app:layout_constraintStart_toStartOf="parent"
