@@ -2,14 +2,17 @@ package com.app.ecommerce.ui.main.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.app.ecommerce.ui.main.activity.BaseActivity
+import com.app.ecommerce.ui.main.activity.BaseActivity.Companion.TAG
 import com.app.ecommerce.utils.BaseViewModel
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment() {
@@ -71,4 +74,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
     fun getBaseActivity(): BaseActivity<*, *>? {
         return baseActivity
     }
+
+
 }

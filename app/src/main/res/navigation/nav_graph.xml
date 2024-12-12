@@ -1,5 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph" />
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.app.ecommerce.ui.main.fragments.DashBoardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.app.ecommerce.ui.main.fragments.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="product_id"
+            app:argType="string" />
+        <argument
+            android:name="product_image"
+            app:argType="string" />
+        <argument
+            android:name="product_title"
+            app:argType="string" />
+        <argument
+            android:name="product_price"
+            app:argType="float" />
+        <argument
+            android:name="product_category"
+            app:argType="string" />
+        <argument
+            android:name="product_des"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.app.ecommerce.ui.main.cart.view.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart">
+        <argument
+            android:name="product_id"
+            app:argType="string" />
+        <argument
+            android:name="product_image"
+            app:argType="string" />
+        <argument
+            android:name="product_title"
+            app:argType="string" />
+        <argument
+            android:name="product_price"
+            app:argType="float" />
+        <argument
+            android:name="product_category"
+            app:argType="string" />
+        <argument
+            android:name="product_des"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>
