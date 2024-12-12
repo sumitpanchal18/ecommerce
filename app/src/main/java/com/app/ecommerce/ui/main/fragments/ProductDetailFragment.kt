@@ -6,14 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
 import com.app.ecommerce.databinding.FragmentProductDetailBinding
+import com.app.ecommerce.ui.main.cart.model.CartItem
+import com.app.ecommerce.ui.main.cart.viewModel.CartViewModel
 import com.app.ecommerce.ui.main.navigator.DashBoardNavigator
 import com.app.ecommerce.ui.viewmodel.ProductDetailViewModel
 import com.bumptech.glide.Glide
@@ -25,6 +27,7 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
     DashBoardNavigator {
 
     private val productDetailViewModel: ProductDetailViewModel by viewModels()
+    private val cartViewModel: CartViewModel by activityViewModels()
     private lateinit var binding: FragmentProductDetailBinding
 
     private val args: ProductDetailFragmentArgs by navArgs()
@@ -36,8 +39,7 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
     override fun getViewModel(): ProductDetailViewModel = productDetailViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         binding.viewModel = productDetailViewModel
@@ -78,11 +80,8 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
             binding.txtCategory.text = product.category
             binding.txtDescription.text = product.description
 
-            Glide.with(requireContext())
-                .load(product.imageUrl)
-                .placeholder(R.drawable.loading)
-                .error(R.drawable.error)
-                .into(binding.imgProduct)
+            Glide.with(requireContext()).load(product.imageUrl).placeholder(R.drawable.loading)
+                .error(R.drawable.error).into(binding.imgProduct)
         }
     }
 
@@ -96,15 +95,24 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
     }
 
     override fun handleAddToCart() {
-        Log.d("ProductDetailFragment", "Add to Cart button clicked")
-
-        if (isAdded) {  // Ensure the fragment is attached
-            Toast.makeText(requireContext(), "Added to Cart", Toast.LENGTH_SHORT).show()
-        } else {
-            Log.d("ProductDetailFragment", "Fragment not attached, skipping Toast")
-        }
+        val product = productDetailViewModel.product.value ?: return
+        val cartItem = CartItem(
+            productId = product.id,
+            productImage = product.imageUrl,
+            productTitle = product.title,
+            productPrice = product.price,
+            productQuantity = 1
+        )
+        cartViewModel.addToCart(cartItem)
+        Log.d("ProductDetailFragment", "Navigating to CartFragment with item: $cartItem")
+        val action = ProductDetailFragmentDirections.actionProductDetailFragmentToCartFragment(
+            productId = cartItem.productId,
+            productImage = cartItem.productImage,
+            productTitle = cartItem.productTitle,
+            productPrice = cartItem.productPrice.toFloat(),
+            productCategory = product.category,
+            productDes = product.description
+        )
+        findNavController().navigate(action)
     }
-
-
-
 }

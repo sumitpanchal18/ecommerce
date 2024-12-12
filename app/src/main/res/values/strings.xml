@@ -77,6 +77,7 @@
     <string name="description">Description</string>
     <string name="category">Category</string>
     <string name="back">Back</string>
+    <string name="checkout">CheckOut</string>
 
     <!-- Add your other required strings -->
 </resources>
