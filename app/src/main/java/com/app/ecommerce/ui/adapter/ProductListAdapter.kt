@@ -10,19 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.ecommerce.R
 import com.bumptech.glide.Glide
 
-class ProductListAdapter(private var mList: List<Items>) :
-    RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
-
-    private var onItemClickListener: ((Items) -> Unit)? = null
+class ProductListAdapter(
+    private var mList: List<Items>,
+    private val onItemClick: (Items) -> Unit
+) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<Items>) {
         mList = newList
         notifyDataSetChanged()
-    }
-
-    fun setOnItemClickListener(listener: (Items) -> Unit) {
-        onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,16 +31,21 @@ class ProductListAdapter(private var mList: List<Items>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mList[position]
 
+        // Load image using Glide
         Glide.with(holder.itemView.context)
             .load(item.imageUrl)
             .placeholder(R.drawable.loading)
             .error(R.drawable.error)
             .into(holder.imageView)
+
+        // Set item data
         holder.title.text = "Title : ${item.title}"
         holder.price.text = "Price : $${item.price}"
         holder.category.text = "Category : ${item.category}"
+
+        // Handle item click
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(item)
+            onItemClick(item)
         }
     }
 

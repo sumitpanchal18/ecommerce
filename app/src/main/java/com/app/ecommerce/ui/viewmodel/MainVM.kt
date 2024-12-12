@@ -23,10 +23,8 @@ class MainVM @Inject constructor(
     val productList: LiveData<List<Product>> get() = _productList
 
     fun fetchProducts() {
-        navigator?.showProgressDialog()
         viewModelScope.launch {
             val result = repository.getProducts()
-            navigator?.dismissProgressDialog()
 
             when (result.status) {
                 ResponseStatus.Status.SUCCESS -> {
@@ -37,7 +35,6 @@ class MainVM @Inject constructor(
                 }
                 else -> {
                     Log.e(TAG, "Error fetching products: ${result.message}")
-                    navigator?.showMessage(result.code, result.message)
                 }
             }
         }

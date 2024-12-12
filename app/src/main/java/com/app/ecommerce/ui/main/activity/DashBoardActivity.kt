@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
 import com.app.ecommerce.databinding.ActivityDashBoardBinding
-import com.app.ecommerce.ui.main.fragments.DashBoardFragment
 import com.app.ecommerce.ui.viewmodel.MainVM
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,13 +19,6 @@ class DashBoardActivity : BaseActivity<ActivityDashBoardBinding, MainVM>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragment()
     }
 
-    private fun addFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, DashBoardFragment())
-            .addToBackStack(null)
-            .commit()
-    }
 }

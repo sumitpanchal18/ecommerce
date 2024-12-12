@@ -1,8 +1,10 @@
 package com.app.ecommerce.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.ecommerce.ui.adapter.Items
+import com.app.ecommerce.ui.main.activity.BaseActivity.Companion.TAG
 import com.app.ecommerce.ui.main.navigator.DashBoardNavigator
 import com.app.ecommerce.utils.BaseViewModel
 
@@ -13,7 +15,12 @@ class ProductDetailViewModel : BaseViewModel<DashBoardNavigator>() {
     val product: LiveData<Items> get() = _product
 
     fun onBackClicked() {
+        Log.d(TAG, "ViewModel: Back clicked")
         navigator?.onBackClicked()
+    }
+
+    fun onAddToCartClicked() {
+        navigator?.handleAddToCart()
     }
 
     fun setProductDetails(

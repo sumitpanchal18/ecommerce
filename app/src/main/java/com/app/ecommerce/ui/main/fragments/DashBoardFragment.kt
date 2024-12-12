@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
@@ -29,35 +31,40 @@ class DashBoardFragment : BaseFragment<FragmentDashboardBinding, MainVM>() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        adapter = ProductListAdapter(emptyList(), onItemClick = {
+            navigateToUserDetail(it)
+        })
         setupRecyclerView()
+
         setupObservers()
         fetchProducts()
         return binding.root
     }
 
+
     private fun setupRecyclerView() {
-        adapter = ProductListAdapter(emptyList())
-        adapter.setOnItemClickListener { item ->
-            val fragment = ProductDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString("product_id", item.id)
-                    putString("product_image", item.imageUrl)
-                    putString("product_title", item.title)
-                    putDouble("product_price", item.price)
-                    putString("product_category", item.category)
-                    putString("product_des", item.description)
-                }
-            }
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, fragment)
-                .addToBackStack(null)  // Add fragment to back stack for back navigation
-                .commit()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().finish()
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
+
+    private fun navigateToUserDetail(item: Items) {
+        Log.d("DashBoardFragment", "Navigating to ProductDetailFragment with item: $item")
+        val action = DashBoardFragmentDirections.actionDashboardFragmentToProductDetailFragment(
+            productId = item.id,
+            productImage = item.imageUrl,
+            productTitle = item.title,
+            productPrice = item.price.toFloat(),
+            productCategory = item.category,
+            productDes = item.description
+        )
+        findNavController().navigate(action)
+    }
+
 
     private fun setupObservers() {
         mainVM.productList.observe(viewLifecycleOwner) { products ->
