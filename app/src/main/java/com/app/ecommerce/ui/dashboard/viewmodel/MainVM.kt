@@ -22,8 +22,15 @@ class MainVM @Inject constructor(
     private val _productList = MutableLiveData<List<Product>>()
     val productList: LiveData<List<Product>> get() = _productList
 
+    private val _errorState = MutableLiveData<String?>()
+    val errorState: LiveData<String?> get() = _errorState
+
+    private val _loadingState = MutableLiveData<Boolean>()
+    val loadingState: LiveData<Boolean> get() = _loadingState
+
     fun fetchProducts() {
         viewModelScope.launch {
+            _loadingState.value = true
             val result = repository.getProducts()
 
             when (result.status) {
@@ -31,12 +38,21 @@ class MainVM @Inject constructor(
                     result.body?.let {
                         Log.d(TAG, "Fetched Products: $it")
                         _productList.value = it
+                        _errorState.value = null
+                    } ?: run {
+                        _errorState.value = "No products found"
                     }
                 }
-                else -> {
+                ResponseStatus.Status.ERROR -> {
+                    _errorState.value = result.message
                     Log.e(TAG, "Error fetching products: ${result.message}")
                 }
+                else -> {
+                    _errorState.value = "Unexpected error"
+                    Log.e(TAG, "Unexpected error fetching products")
+                }
             }
+            _loadingState.value = false
         }
     }
 }
