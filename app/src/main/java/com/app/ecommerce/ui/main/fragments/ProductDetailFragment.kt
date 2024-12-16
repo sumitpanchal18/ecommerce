@@ -54,6 +54,8 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().popBackStack()
         }
+
+        updateAddToCartButton()
     }
 
     @SuppressLint("SetTextI18n")
@@ -85,6 +87,30 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
         }
     }
 
+    private fun updateAddToCartButton() {
+        val isInCart = cartViewModel.isItemInCart(args.productId)
+        if (isInCart) {
+            binding.btnAddToCart.text = "Go To Cart"
+            binding.btnAddToCart.setBackgroundResource(R.drawable.go_to_cart_bg)
+            binding.btnAddToCart.setOnClickListener {
+                val action =
+                    ProductDetailFragmentDirections.actionProductDetailFragmentToCartFragment(
+                        productId = args.productId,
+                        productImage = args.productImage,
+                        productTitle = args.productTitle,
+                        productPrice = args.productPrice,
+                        productCategory = args.productCategory,
+                        productDes = args.productDes
+                    )
+                findNavController().navigate(action)
+            }
+        } else {
+            binding.btnAddToCart.text = "Add To Cart"
+            binding.btnAddToCart.setBackgroundResource(R.drawable.add_to_cart_bg)
+            binding.btnAddToCart.setOnClickListener { handleAddToCart() }
+        }
+    }
+
     private fun formatPrice(price: Double): String {
         val decimalFormat = DecimalFormat("#.00")
         return decimalFormat.format(price)
@@ -103,16 +129,20 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
             productPrice = product.price,
             productQuantity = 1
         )
-        cartViewModel.addToCart(cartItem)
-        Log.d("ProductDetailFragment", "Navigating to CartFragment with item: $cartItem")
-        val action = ProductDetailFragmentDirections.actionProductDetailFragmentToCartFragment(
-            productId = cartItem.productId,
-            productImage = cartItem.productImage,
-            productTitle = cartItem.productTitle,
-            productPrice = cartItem.productPrice.toFloat(),
-            productCategory = product.category,
-            productDes = product.description
-        )
-        findNavController().navigate(action)
+
+        if (cartViewModel.isItemInCart(cartItem.productId)) {
+            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToCartFragment(
+                productId = cartItem.productId,
+                productImage = cartItem.productImage,
+                productTitle = cartItem.productTitle,
+                productPrice = cartItem.productPrice.toFloat(),
+                productCategory = product.category,
+                productDes = product.description
+            )
+            findNavController().navigate(action)
+        } else {
+            cartViewModel.addToCart(cartItem)
+            updateAddToCartButton()
+        }
     }
 }

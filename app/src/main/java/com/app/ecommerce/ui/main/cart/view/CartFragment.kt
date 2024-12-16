@@ -61,7 +61,7 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>(), CartNav
         }
     }
 
-    override fun onItemClicked(cartItem: CartItem) {
+    override fun onItemClicked() {
         // Handle item click here
     }
 }
