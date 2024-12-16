@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/dashboardFragment">
 
+    <!-- Dashboard Fragment -->
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.app.ecommerce.ui.dashboard.view.DashBoardFragment"
@@ -15,6 +17,8 @@
             android:id="@+id/action_dashboardFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
     </fragment>
+
+    <!-- Product Detail Fragment -->
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.app.ecommerce.ui.productDetail.view.ProductDetailFragment"
@@ -41,7 +45,12 @@
         <action
             android:id="@+id/action_productDetailFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
+
+    <!-- Cart Fragment -->
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.app.ecommerce.ui.cart.view.CartFragment"
@@ -65,17 +74,23 @@
         <argument
             android:name="product_des"
             app:argType="string" />
+        <action
+            android:id="@+id/action_cartFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <!-- No need to add actions here unless you plan to navigate elsewhere from CartFragment -->
     </fragment>
+
+    <!-- Account Fragment -->
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.app.ecommerce.ui.account.view.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+
+    <!-- Wishlist Fragment -->
     <fragment
         android:id="@+id/wishlistFragment"
         android:name="com.app.ecommerce.ui.wishlist.view.WishlistFragment"
         android:label="fragment_wishlist"
         tools:layout="@layout/fragment_wishlist" />
-
-
 </navigation>

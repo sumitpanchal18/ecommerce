@@ -1,6 +1,8 @@
 package com.app.ecommerce.ui.productDetail.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +15,9 @@ import androidx.navigation.fragment.navArgs
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
 import com.app.ecommerce.databinding.FragmentProductDetailBinding
+import com.app.ecommerce.ui.base.view.BaseFragment
 import com.app.ecommerce.ui.cart.model.CartItem
 import com.app.ecommerce.ui.cart.viewModel.CartViewModel
-import com.app.ecommerce.ui.base.view.BaseFragment
 import com.app.ecommerce.ui.dashboard.model.DashBoardNavigator
 import com.app.ecommerce.ui.productDetail.viewmodel.ProductDetailViewModel
 import com.bumptech.glide.Glide
@@ -52,10 +54,32 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_productDetailFragment_to_dashboardFragment)
+        }
+        binding.imgShareBtnLogo.setOnClickListener {
+            shareProductOnSocialMedia()
         }
 
         updateAddToCartButton()
+    }
+
+    private fun shareProductOnSocialMedia() {
+        val product = productDetailViewModel.product.value ?: return
+        val productTitle = product.title
+        val productDescription = product.description
+        val productUrl = "https://fakestoreapi.com/products/${product.id}"
+
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "$productTitle\n\n$productDescription\n$productUrl")
+            type = "text/plain"
+        }
+
+        val imageUri = Uri.parse(product.imageUrl)
+        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri)
+        shareIntent.type = "image/*"
+
+        startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 
     @SuppressLint("SetTextI18n")
@@ -117,7 +141,7 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding, Product
     }
 
     override fun onBackClicked() {
-        findNavController().popBackStack()
+        findNavController().navigate(R.id.action_productDetailFragment_to_dashboardFragment)
     }
 
     override fun handleAddToCart() {

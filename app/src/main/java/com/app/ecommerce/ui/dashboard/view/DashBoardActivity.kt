@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -142,7 +144,7 @@ class DashBoardActivity : BaseActivity<ActivityDashBoardBinding, MainVM>() {
         binding.customToolbar.menuIcon.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
-
+        fetchProductsForSearch()
         binding.customToolbar.searchIcon.setOnClickListener {
             binding.clSearchBar.visibility =
                 if (binding.clSearchBar.visibility == View.GONE) View.VISIBLE else View.GONE
@@ -154,4 +156,18 @@ class DashBoardActivity : BaseActivity<ActivityDashBoardBinding, MainVM>() {
         return true
     }
 
+    private fun fetchProductsForSearch() {
+        mainVM.productList.observe(this, Observer { products ->
+            if (products.isNotEmpty()) {
+                binding.etSearch.setText(products.first().title)
+            }
+        })
+        mainVM.errorState.observe(this, Observer { error ->
+            if (error != null) {
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+            }
+        })
+        mainVM.loadingState.observe(this, Observer { isLoading ->
+        })
+    }
 }
