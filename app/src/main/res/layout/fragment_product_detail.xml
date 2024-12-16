@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.viewmodel.ProductDetailViewModel" />
+            type="com.app.ecommerce.ui.productDetail.viewmodel.ProductDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

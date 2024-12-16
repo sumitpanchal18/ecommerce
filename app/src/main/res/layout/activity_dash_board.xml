@@ -6,14 +6,14 @@
 
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.viewmodel.MainVM" />
+            type="com.app.ecommerce.ui.dashboard.viewmodel.MainVM" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.activity.DashBoardActivity">
+        tools:context=".ui.dashboard.view.DashBoardActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

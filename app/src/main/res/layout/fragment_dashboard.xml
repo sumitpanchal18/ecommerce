@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.viewmodel.MainVM" />
+            type="com.app.ecommerce.ui.dashboard.viewmodel.MainVM" />
     </data>
 
     <RelativeLayout

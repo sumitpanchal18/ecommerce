@@ -7,11 +7,11 @@
 
         <variable
             name="item"
-            type="com.app.ecommerce.ui.main.cart.model.CartItem" />
+            type="com.app.ecommerce.ui.cart.model.CartItem" />
 
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.main.cart.viewModel.CartViewModel" />
+            type="com.app.ecommerce.ui.cart.viewModel.CartViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
