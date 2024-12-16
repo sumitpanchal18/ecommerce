@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.main.cart.viewModel.CartViewModel" />
+            type="com.app.ecommerce.ui.cart.viewModel.CartViewModel" />
     </data>
 
     <RelativeLayout
@@ -24,7 +24,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
             android:layout_gravity="bottom"
+            android:background="@drawable/add_to_cart_bg"
             android:text="@string/checkout" />
     </RelativeLayout>
 </layout>

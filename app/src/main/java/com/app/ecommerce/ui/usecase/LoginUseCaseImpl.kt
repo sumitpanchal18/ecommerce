@@ -1,7 +1,7 @@
 package com.app.ecommerce.ui.usecase
 
 import com.app.ecommerce.network.ApiInterface
-import com.app.ecommerce.network.Product
+import com.app.ecommerce.ui.dashboard.model.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

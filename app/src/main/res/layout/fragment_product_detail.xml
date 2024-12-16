@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.app.ecommerce.ui.viewmodel.ProductDetailViewModel" />
+            type="com.app.ecommerce.ui.productDetail.viewmodel.ProductDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,8 +32,8 @@
                     android:layout_width="47dp"
                     android:layout_height="55dp"
                     android:layout_marginStart="15dp"
-                    android:onClick="@{() -> viewModel.onBackClicked()}"
                     android:layout_marginTop="10dp"
+                    android:onClick="@{() -> viewModel.onBackClicked()}"
                     android:padding="8dp"
                     android:src="@drawable/img_3"
                     app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
                     android:layout_height="36dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/addtocart_background">
+                    android:background="@drawable/grey_round_bg">
 
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/imgPlusItem"
@@ -193,7 +193,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="20dp"
-                        android:background="@drawable/addtocart_background"
+                        android:background="@drawable/grey_round_bg"
                         android:text="@string/size_s"
                         android:textAlignment="center"
                         android:textSize="30sp" />
@@ -203,7 +203,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="20dp"
-                        android:background="@drawable/addtocart_background"
+                        android:background="@drawable/grey_round_bg"
                         android:text="@string/size_m"
                         android:textAlignment="center"
                         android:textSize="29sp" />
@@ -213,7 +213,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="20dp"
-                        android:background="@drawable/addtocart_background"
+                        android:background="@drawable/grey_round_bg"
                         android:text="@string/l"
                         android:textAlignment="center"
                         android:textSize="30sp" />
@@ -223,7 +223,7 @@
                         android:layout_width="45dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="20dp"
-                        android:background="@drawable/addtocart_background"
+                        android:background="@drawable/grey_round_bg"
                         android:text="@string/xl"
                         android:textAlignment="center"
                         android:textSize="30sp" />
@@ -394,38 +394,27 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="BottomAppBar">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="25dp"
-                    android:textColor="@color/black"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnAddToCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginVertical="5dp"
-                    android:backgroundTint="@color/lavender"
-                    android:onClick="@{() -> viewModel.onAddToCartClicked()}"
-                    android:text="@string/add_to_cart"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:cornerRadius="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:layout_editor_absoluteX="16dp" />
-
-            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/add_to_cart_bg"
+                android:onClick="@{() -> viewModel.onAddToCartClicked()}"
+                android:text="@string/add_to_cart"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
 
         </com.google.android.material.bottomappbar.BottomAppBar>

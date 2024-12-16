@@ -5,16 +5,19 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.app.ecommerce.ui.main.fragments.DashBoardFragment"
+        android:name="com.app.ecommerce.ui.dashboard.view.DashBoardFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.app.ecommerce.ui.main.fragments.ProductDetailFragment"
+        android:name="com.app.ecommerce.ui.productDetail.view.ProductDetailFragment"
         android:label="ProductDetailFragment"
         tools:layout="@layout/fragment_product_detail">
         <argument
@@ -41,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.app.ecommerce.ui.main.cart.view.CartFragment"
+        android:name="com.app.ecommerce.ui.cart.view.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart">
         <argument
@@ -63,6 +66,16 @@
             android:name="product_des"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.app.ecommerce.ui.account.view.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.app.ecommerce.ui.wishlist.view.WishlistFragment"
+        android:label="fragment_wishlist"
+        tools:layout="@layout/fragment_wishlist" />
 
 
 </navigation>
