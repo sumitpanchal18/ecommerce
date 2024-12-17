@@ -21,6 +21,8 @@
             android:exported="false"
             android:theme="@style/Theme.DragerHill" />
         <activity
+            android:theme="@style/SplashScreenTheme"
+
             android:name=".ui.base.view.SplashActivity"
             android:exported="true">
             <intent-filter>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">E-Com</string>
+    <string name="app_name">E2Logy</string>
     <string name="create_entry">Create New Entry</string>
     <string name="delete_all">Delete all data</string>
     <string name="timestamp_will_appear_here">Timestamp will appear here</string>
