@@ -1,6 +1,8 @@
 package com.app.ecommerce.ui.cart.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ecommerce.BR
 import com.app.ecommerce.R
 import com.app.ecommerce.databinding.FragmentCartBinding
+import com.app.ecommerce.ui.base.view.BaseActivity.Companion.TAG
 import com.app.ecommerce.ui.base.view.BaseFragment
 import com.app.ecommerce.ui.cart.adapter.CartAdapter
 import com.app.ecommerce.ui.cart.model.CartNavigator
@@ -37,7 +40,6 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>(), CartNav
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.viewModel = cartViewModel
         setupRecyclerView()
-        observeCartItems()
         return binding.root
     }
 
@@ -47,6 +49,8 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>(), CartNav
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().popBackStack()
         }
+        observeCartItems()
+
     }
 
     private fun setupRecyclerView() {
@@ -61,21 +65,27 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>(), CartNav
                 productDes = ""
             )
             findNavController().navigate(action)
-
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeCartItems() {
         cartViewModel.cartItems.observe(viewLifecycleOwner) { items ->
-            (binding.recyclerViewCart.adapter as CartAdapter).submitList(items)
-
-            // Update UI with the calculated data
+            // Log to confirm the data is being observed correctly
+            Log.d(TAG, "Observed cart items: $items")
+            // Update UI with the calculated data immediately after cart changes
             binding.txtTotalItems.text = "Items: ${cartViewModel.totalItems.value}"
             binding.txtSubtotal.text = "Subtotal: $${cartViewModel.subtotal.value}"
             binding.txtGST.text = "GST (5%): $${cartViewModel.gst.value}"
             binding.txtTotalPrice.text = "Total: $${cartViewModel.totalPrice.value}"
+
+            // Manually notify changes to RecyclerView
+            val adapter = binding.recyclerViewCart.adapter as CartAdapter
+            adapter.submitList(items)
+            adapter.notifyDataSetChanged()  // Notify the adapter of data changes
         }
     }
+
 
     override fun onItemClicked() {
     }

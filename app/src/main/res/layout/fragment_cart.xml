@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -19,52 +20,70 @@
             android:layout_centerHorizontal="true" />
 
         <!-- Display number of items -->
-        <TextView
-            android:id="@+id/txtTotalItems"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recyclerViewCart"
-            android:layout_marginTop="8dp"
-            android:layout_centerHorizontal="true"
-            android:text="Items: 0"
-            android:textSize="16sp"
-            android:textColor="@android:color/black" />
+            android:layout_below="@+id/recyclerViewCart"
+            android:layout_margin="16dp"
+            android:layout_marginTop="-178dp"
+            android:backgroundTint="@android:color/white"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp">
 
-        <!-- Display subtotal -->
-        <TextView
-            android:id="@+id/txtSubtotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtTotalItems"
-            android:layout_marginTop="8dp"
-            android:layout_centerHorizontal="true"
-            android:text="Subtotal: $0.00"
-            android:textSize="16sp"
-            android:textColor="@android:color/black" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
 
-        <!-- Display GST -->
-        <TextView
-            android:id="@+id/txtGST"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtSubtotal"
-            android:layout_marginTop="8dp"
-            android:layout_centerHorizontal="true"
-            android:text="GST (5%): $0.00"
-            android:textSize="16sp"
-            android:textColor="@android:color/black" />
+                <!-- Display total items -->
+                <TextView
+                    android:id="@+id/txtTotalItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Items: 0"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
-        <!-- Display total amount -->
-        <TextView
-            android:id="@+id/txtTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtGST"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"
-            android:text="Total: $0.00"
-            android:textSize="18sp"
-            android:textColor="@android:color/black" />
+                <!-- Display subtotal -->
+                <TextView
+                    android:id="@+id/txtSubtotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtTotalItems"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Subtotal: $0.00"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <!-- Display GST -->
+                <TextView
+                    android:id="@+id/txtGST"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtSubtotal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="GST (5%): $0.00"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <!-- Display total amount -->
+                <TextView
+                    android:id="@+id/txtTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtGST"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:text="Total: $0.00"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <!-- Checkout Button -->
         <androidx.appcompat.widget.AppCompatButton
