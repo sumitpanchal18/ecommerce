@@ -12,16 +12,16 @@ class CartViewModel : BaseViewModel<CartNavigator>() {
     private val _cartItems = MutableLiveData<MutableList<CartItem>>(mutableListOf())
     val cartItems: LiveData<MutableList<CartItem>> = _cartItems
 
-    private val _totalPrice = MutableLiveData<Double>(0.0)
+    private val _totalPrice = MutableLiveData(0.0)
     val totalPrice: LiveData<Double> = _totalPrice
 
-    private val _subtotal = MutableLiveData<Double>(0.0)
+    private val _subtotal = MutableLiveData(0.0)
     val subtotal: LiveData<Double> = _subtotal
 
-    private val _gst = MutableLiveData<Double>(0.0)
+    private val _gst = MutableLiveData(0.0)
     val gst: LiveData<Double> = _gst
 
-    private val _totalItems = MutableLiveData<Int>(0)
+    private val _totalItems = MutableLiveData(0)
     val totalItems: LiveData<Int> = _totalItems
 
     fun addToCart(item: CartItem) {
